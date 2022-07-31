@@ -1,0 +1,58 @@
+<div class="login-outer-countainer">
+    <mat-card class="login-inner-countainer">
+      <mat-card-header class="login-title">
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="login-field-container">
+        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="submitLoginForm()"
+          fxLayout="column wrap">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your Email/Phone</mat-label>
+            <input
+              matInput
+              placeholder="Enter Email"
+              formControlName="email"
+              id="email"
+              required
+            />
+            <mat-icon class="custom-icon" matSuffix>contact_page</mat-icon>
+            <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+            <mat-error *ngIf="hasError('email', 'email')">Email is not valid</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'text' : 'password'"
+              formControlName="password"
+              id="password"
+              minlength="8"
+              maxlength="16"
+              required
+            />
+            <button
+              mat-icon-button
+              class="custom-btn"
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon class="custom-icon">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
+            <mat-error *ngIf="hasError('password', 'minlength')">password is not valid</mat-error>
+          </mat-form-field>
+  
+          <button
+            mat-raised-button
+            color="primary"
+            class="login-btn"
+          >
+            Login
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
