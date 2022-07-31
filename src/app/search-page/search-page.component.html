@@ -1,1 +1,25 @@
-<p>search-page works!</p>
+<h1>Search</h1>
+<!-- <input type="search" class="mat-elevation-z2" [mdAutocomplete]="auto" [formControl]="searchControl">
+    <div class="spacer"></div>
+
+    <mat-autocomplete #auto="mdAutocomplete" class="mat-elevation-z2">
+      <md-option *ngFor="let item of filteredResults$ | async" [value]="item">
+        <span [innerHTML]="item | bold:searchControl.value"></span>
+      </md-option>
+    </mat-autocomplete> -->
+
+
+
+<form>
+    <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="searchControl" 
+            [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredResults$ | async" [value]="item">
+                <!-- {{option}} -->
+                <span [innerHTML]="item | bold:searchControl.value"></span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

@@ -9,6 +9,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 //custom components here.
 import { HomeComponent } from './home/home.component';
@@ -23,7 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
     //custom package import
     ToastrModule.forRoot(),
     RouterModule.forRoot([
