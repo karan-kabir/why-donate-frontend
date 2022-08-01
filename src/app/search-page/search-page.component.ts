@@ -3,8 +3,6 @@ import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 // import { SAMPLE_RESULTS } from './sample-results';
 
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
