@@ -22,7 +22,7 @@ export class AppHttpService {
 
   public setAuthHeader(token: string) {
     this._headers = {
-      "Authorization":`Bearer ${token}`
+      "Cookie":`Authentication=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1OTM4OTQ1MywiZXhwIjoxNjU5NTMzNDUzfQ.yxA-SSXCDhjUp0HZj4V2NVKBFNXJCxGu52_-GvH_Vls;`
     };
   }
 
@@ -37,8 +37,10 @@ export class AppHttpService {
     if (!url.startsWith("/")) {
       throw new Error(`URL needs to start with '/', currently ${url}`);
     }
+    console.log(options);
+    
     if (query !== null) {
-      options.headers.params = query;
+      Object.assign(options, {params: query});
     }
     let burl = base_url === null ? environment.base_url : base_url;
     let curl = `${burl}${url}`;
@@ -60,7 +62,7 @@ export class AppHttpService {
     let curl = `${burl}${url}`;
     return await lastValueFrom(this.http
      .post<T>(curl, body, options)
-     .pipe(last()));
+     );
   }
 
 }

@@ -1,5 +1,6 @@
-<h1>Search</h1>
-<!-- <input type="search" class="mat-elevation-z2" [mdAutocomplete]="auto" [formControl]="searchControl">
+<div>
+  <h1>Search</h1>
+  <!-- <input type="search" class="mat-elevation-z2" [mdAutocomplete]="auto" [formControl]="searchControl">
     <div class="spacer"></div>
 
     <mat-autocomplete #auto="mdAutocomplete" class="mat-elevation-z2">
@@ -8,18 +9,79 @@
       </md-option>
     </mat-autocomplete> -->
 
-
-
-<form>
-    <mat-form-field appearance="fill">
-        <mat-label>Search</mat-label>
-        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="searchControl" 
-            [matAutocomplete]="auto">
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of filteredResults$ | async" [value]="item">
-                <!-- {{option}} -->
-                <span [innerHTML]="item | bold:searchControl.value"></span>
+  <div>
+    <div>
+      <form (ngSubmit)="searchSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Search</mat-label>
+          <input
+            type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [formControl]="searchControl"
+          />
+          <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredResults$ | async"
+              [value]="item"
+            >
+              <span [innerHTML]="item | bold: searchControl.value"></span>
             </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+          </mat-autocomplete> -->
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary">Load Data</button>
+        </div>
+      </form>
+    </div>
+   
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.Title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Year">
+        <th mat-header-cell *matHeaderCellDef>Year</th>
+        <td mat-cell *matCellDef="let element">{{ element.Year }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Rated">
+        <th mat-header-cell *matHeaderCellDef>Rated</th>
+        <td mat-cell *matCellDef="let element">{{ element.Rated }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Runtime">
+        <th mat-header-cell *matHeaderCellDef>Runtime</th>
+        <td mat-cell *matCellDef="let element">{{ element.Runtime }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let element">{{ element.Genre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Director">
+        <th mat-header-cell *matHeaderCellDef>Director</th>
+        <td mat-cell *matCellDef="let element">{{ element.Director }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Writer">
+        <th mat-header-cell *matHeaderCellDef>Writer</th>
+        <td mat-cell *matCellDef="let element">{{ element.Writer }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Actors">
+        <th mat-header-cell *matHeaderCellDef>Actors</th>
+        <td mat-cell *matCellDef="let element">{{ element.Actors }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Language">
+        <th mat-header-cell *matHeaderCellDef>Language</th>
+        <td mat-cell *matCellDef="let element">{{ element.Language }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Released">
+        <th mat-header-cell *matHeaderCellDef>Released</th>
+        <td mat-cell *matCellDef="let element">{{ element.Released }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

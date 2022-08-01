@@ -11,7 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import {MatTableModule} from '@angular/material/table';
 
 //custom components here.
 import { HomeComponent } from './home/home.component';
@@ -23,6 +23,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AppHttpService } from './shared/app-http.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatAutocompleteModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatButtonModule,
     //custom package import
     ToastrModule.forRoot(),
     RouterModule.forRoot([

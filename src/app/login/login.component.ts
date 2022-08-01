@@ -53,13 +53,9 @@ export class LoginComponent implements OnInit {
       };
       if (this.loginForm.valid) {
         console.log("Form is Validate");
-        let res=await this.http.post("/authentication/log-in", x);
-        console.log();
-        let success=res?["success"]:false;
-        let data=res?["data"]:"false";
-        let token =data?["token"]:"false";
+        let res:any=await this.http.post("/authentication/log-in", x);
         
-        success?(this.route.navigate(["/search"]),localStorage.setItem("access_token",token.toString()),this.http.setAuthHeader(token.toString()),this.toastr.show("login success")):this.toastr.error("Invalid Credentials");
+        res.success==true?(this.route.navigate(["/search"]),localStorage.setItem("access_token",res?.data?.token.toString()),this.toastr.show("login success")):this.toastr.error("Invalid Credentials");
       
       } else {
         this.toastr.error("Login Failed!", "Login Error", {
