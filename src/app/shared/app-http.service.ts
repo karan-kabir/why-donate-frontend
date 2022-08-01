@@ -42,7 +42,7 @@ export class AppHttpService {
     if (query !== null) {
       Object.assign(options, {params: query});
     }
-    let burl = base_url === null ? environment.base_url : base_url;
+    let burl = base_url === null ? "https://why-donate-backend.herokuapp.com" : base_url;
     let curl = `${burl}${url}`;
     return await lastValueFrom(this.http.get<T>(curl, options).pipe(last()));
   }
@@ -58,7 +58,7 @@ export class AppHttpService {
     if (!url.startsWith("/")) {
       throw new Error(`URL needs to start with '/', currently ${url}`);
     }
-    let burl = base_url === null ? environment.base_url : base_url;
+    let burl = base_url === null ? "https://why-donate-backend.herokuapp.com" : base_url;
     let curl = `${burl}${url}`;
     return await lastValueFrom(this.http
      .post<T>(curl, body, options)
