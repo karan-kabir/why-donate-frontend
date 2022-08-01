@@ -21,6 +21,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 
 //custom package import
 import { ToastrModule } from 'ngx-toastr';
+import { AppHttpService } from './shared/app-http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,9 +49,11 @@ import { ToastrModule } from 'ngx-toastr';
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'search', component: SearchPageComponent },
-    ])
+    ]),
+    //http client
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AppHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
